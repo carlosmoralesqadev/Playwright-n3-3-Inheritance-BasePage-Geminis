@@ -6,6 +6,15 @@ export const Locators = {
         login: {
             userName: "standard_user",
             userPass: "secret_sauce",
+
+            inputName: /Username/i,
+            inputPass: /Password/i,
+            btnLogin: /Login/i,
+        },
+
+        Products: {
+            productsTitle: "title",
         },
     },
 };
+
