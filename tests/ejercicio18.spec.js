@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { Locators } from './archivo_locators.js';
+//import { Locators } from './archivo_locators.js';
 import { LoginPage } from '../pages/LoginPage.js';
 
 test.describe('Funcionalidad', () => {
