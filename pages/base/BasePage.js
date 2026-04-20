@@ -7,12 +7,11 @@ export class BasePage {
         this.page = page;
     }
 
-    async navegar() {
-        await this.page.goto(Locators.url);
+    async navegar(url = Locators.url) {
+        await this.page.goto(url);
     }
 
     async esperar(ms) {
-        await this.page.waitForTimeout(ms)
+        await this.page.waitForTimeout(ms);
     }
-
 }

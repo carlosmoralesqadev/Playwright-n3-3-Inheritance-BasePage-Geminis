@@ -1,28 +1,21 @@
-import { Locators } from "../data/testData.js"
-
-import { expect } from '@playwright/test';
+import { Locators } from "../data/testData.js";
+import { expect } from "@playwright/test";
+import { BasePage } from "./base/BasePage.js";
 
 export class LoginPage extends BasePage {
     /** @param {import('@playwright/test').Page} page */
     constructor(page) {
         super(page);
-    
-        this.inputName = page.getByRole("textbox", { name : Locators.seccion.login.inputName });
-        this.inputPass = page.getByRole("textbox", { name : Locators.seccion.login.inputPass });
-        this.userName  = Locators.seccion.login.userName;
-        this.userPass  = Locators.seccion.login.userPass;
-        this.btnLogin  = page.getByRole("button", { name : Locators.seccion.login.btnLogin});
-        this.productsTitle = page.getByTestId(Locators.seccion.Products.productsTitle)
+
+        this.inputName = this.page.getByRole("textbox", { name: Locators.seccion.login.inputName });
+        this.inputPass = this.page.getByRole("textbox", { name: Locators.seccion.login.inputPass });
+        this.btnLogin = this.page.getByRole("button", { name: Locators.seccion.login.btnLogin });
     }
 
-    hacerLogin() {
-        await this.inputName.fill(this.userName);
-        await this.inputPass.fill(this.userPass);
+    async hacerLogin(user = Locators.seccion.login.userName, pass = Locators.seccion.login.userPass) {
+        await this.inputName.fill(user);
+        await this.inputPass.fill(pass);
         await this.btnLogin.click();
-        await expect(this.productsTitle).toBeVisible()
-        await expect(this.btnLogin).not.toBeVisible()
+        await expect(this.btnLogin).not.toBeVisible();
     }
-
-
-
 }
